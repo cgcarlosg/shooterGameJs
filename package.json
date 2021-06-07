@@ -22,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/cgcarlosg/shooterGameJs/issues"
   },
-  "homepage": "https://github.com/cgcarlosg/shooterGameJs#readme"
+  "homepage": "https://github.com/cgcarlosg/shooterGameJs#readme",
+  "main": "webpack.config.js"
 }
