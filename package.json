@@ -5,8 +5,11 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
+    "csv-loader": "^3.0.3",
     "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.2"
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2",
+    "xml-loader": "^1.2.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
