@@ -1,0 +1,26 @@
+{
+  "name": "shooter-game-js",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgcarlosg/shooterGameJs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cgcarlosg/shooterGameJs/issues"
+  },
+  "homepage": "https://github.com/cgcarlosg/shooterGameJs#readme"
+}
