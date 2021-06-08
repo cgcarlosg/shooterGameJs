@@ -1,12 +1,24 @@
-import './style.css';
+import '../assets/styles/style.css';
 
-function component() {
-    const element = document.createElement('div');
-  
-    // Lodash, currently included via a script, is required for this line to work
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  
-    return element;
-  }
-  
-  document.body.appendChild(component());
+import Phaser from './phaser';
+import Start from './scenes/start';
+
+const config = {
+  type: Phaser.WEBGL,
+  width: 700,
+  height: 600,
+  backgroundColor: 'black',
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { x: 0, y: 0 },
+    },
+  },
+  scene: [
+    Start
+  ],
+  pixelArt: true,
+  roundPixels: true,
+};
+
+const game = new Phaser.Game(config);
