@@ -92,5 +92,26 @@ export default class MainScene extends Phaser.Scene {
       this.playerShootDelay = 22;
       this.playerShootTick = 0;
   
-     
+      this.shieldPattern = [
+        [0, 0, 0, 1, 1, 0, 0, 0],
+        [0, 0, 1, 1, 1, 1, 0, 0],
+        [0, 1, 1, 1, 1, 1, 1, 0],
+  
+      ];
+  
+      this.enemies = this.add.group();
+      this.enemyLasers = this.add.group();
+      this.playerLasers = this.add.group();
+      this.explosions = this.add.group();
+      this.shieldTiles = this.add.group();
+      this.shieldHoles = this.add.group();
+  
+      this.lastEnemyMoveDir = 'RIGHT';
+      this.enemyMoveDir = 'LEFT';
+      this.enemyRect = new Phaser.Geom.Rectangle(
+        0,
+        0,
+        Math.round((this.game.config.width / 24) * 0.75) * 24,
+        Math.round((this.game.config.height / 20) * 0.25) * 20,
+      );
   }
