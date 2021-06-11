@@ -114,4 +114,83 @@ export default class MainScene extends Phaser.Scene {
         Math.round((this.game.config.width / 24) * 0.75) * 24,
         Math.round((this.game.config.height / 20) * 0.25) * 20,
       );
+
+      for (let x = 0; x < Math.round((this.game.config.width / 25) * 0.75); x += 1) {
+        for (let y = 0; y < Math.round((this.game.config.height / 20) * 0.25); y += 1) {
+          const enemy = new Enemy(this, x * 24, 128 + (y * 20), 'sprEnemy0');
+          enemy.play('sprEnemy0');
+          enemy.setScale(2);
+          this.enemies.add(enemy);
+        }
+      }
+  
+      this.updateEnemiesMovement();
+      this.updateEnemiesShooting();
+      this.updatePlayerMovement();
+      this.updatePlayerShooting();
+      this.updateLasers();
+      this.createLivesIcons();
+  
+      this.physics.add.overlap(this.playerLasers, this.enemies, (laser, enemy) => {
+        if (laser) {
+          laser.destroy();
+        }
+  
+        if (enemy) {
+          this.createExplosion(enemy.x, enemy.y);
+          this.addScore(10);
+          enemy.destroy();
+        } else {
+          this.scene.start('GameOver', {
+            gameScore: this.passingData.score,
+          });
+        }
+      }, null, this);
+  
+      this.physics.add.overlap(this.playerLasers, this.enemyLasers, (playerLaser, enemyLaser) => {
+        if (playerLaser) {
+          playerLaser.destroy();
+        }
+  
+        if (enemyLaser) {
+          enemyLaser.destroy();
+        }
+      }, null, this);
+  
+      this.physics.add.overlap(this.playerLasers, this.shieldTiles, (laser, tile) => {
+        if (laser) {
+          laser.destroy();
+        }
+  
+        this.destroyShieldTile(tile);
+      }, null, this);
+  
+      this.physics.add.overlap(this.enemyLasers, this.shieldTiles, (laser, tile) => {
+        if (laser) {
+          laser.destroy();
+        }
+  
+        this.destroyShieldTile(tile);
+      }, null, this);
+  
+      this.physics.add.overlap(this.player, this.enemies, (player) => {
+        if (player) {
+          player.destroy();
+  
+          this.onLifeDown();
+        }
+      }, null, this);
+  
+      this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
+        if (player) {
+          player.destroy();
+  
+          this.onLifeDown();
+        }
+  
+        if (laser) {
+          laser.destroy();
+        }
+      }, null, this);
+
   }
