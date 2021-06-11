@@ -44,6 +44,53 @@ export default class MainScene extends Phaser.Scene {
     }
   
     create() {
+      if (Object.getOwnPropertyNames(this.passingData).length === 0
+        && this.passingData.constructor === Object) {
+        this.passingData = {
+          maxLives: 2,
+          lives: 2,
+          score: 0,
+        };
+      }
+      this.add.image(400, 300, 'bgStart');
+  
+      this.sfx = {
+        explode: this.sound.add('soundExpl'),
+        laserPlayer: this.sound.add('soundLaserPlayer'),
+        laserEnemy: this.sound.add('soundLaserEnemy'),
+      };
+  
+      this.anims.create({
+        key: 'Explosion',
+        frames: this.anims.generateFrameNumbers('Explosion'),
+        frameRate: 18,
+        repeat: 0,
+      });
+  
+      this.textScore = this.add.text(
+        12,
+        10,
+        `Score: ${this.passingData.score}`,
+        {
+          fontFamily: 'monospace',
+          fontSize: 16,
+          align: 'left',
+        },
+      );
+  
+      this.player = new Player(
+  
+        this,
+        this.game.config.width * 0.5,
+        this.game.config.height - 54,
+        this.scale = 0.5,
+      );
+      this.player.body.collideWorldBounds = true;
+  
+      this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+  
+      this.playerShootDelay = 22;
+      this.playerShootTick = 0;
+  
      
   }
-}
