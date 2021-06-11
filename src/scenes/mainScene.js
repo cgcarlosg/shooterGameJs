@@ -418,4 +418,49 @@ export default class MainScene extends Phaser.Scene {
       }
     }
 
+    createExplosion(x, y) {
+      this.sfx.explode.play();
+  
+      const explosion = new Explosion(this, x, y);
+      this.explosions.add(explosion);
+    }
+  
+    createLivesIcons() {
+      for (let i = 0; i < this.passingData.lives; i += 1) {
+        const icon = this.add.sprite(
+          32 + (i * 492),
+          this.game.config.height - 24,
+          'sprPlayer',
+        );
+        icon.setScale(2);
+        icon.setDepth(5);
+      }
+    }
+  
+    onLifeDown() {
+      if (this.passingData.lives === 0) {
+        this.textScore.setVisible(false);
+        this.scene.start('GameOver', {
+          gameScore: this.passingData.score,
+        });
+        this.passingData.score = 0;
+        this.passingData.lives = 3;
+      }
+  
+      this.time.addEvent({
+        delay: 3000,
+        callback() {
+          if (this.passingData.lives > 0) {
+            this.passingData.lives -= 1;
+  
+            this.scene.start('MainScene', this.passingData);
+          } else {
+            this.scene.start('MainScene', { });
+          }
+        },
+        callbackScope: this,
+        loop: false,
+      });
+    }
+
   }
