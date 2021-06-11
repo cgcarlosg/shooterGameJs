@@ -193,4 +193,93 @@ export default class MainScene extends Phaser.Scene {
         }
       }, null, this);
 
+      const totalShieldsWidth = (4 * 96) + (7 * 8);
+      for (let i = 0; i < 3; i += 1) {
+        this.addShield(
+          ((this.game.config.width * 0.5) - (totalShieldsWidth * 0.5)) + ((i * 96) + (7 * 8)),
+          this.game.config.height - 128,
+        );
+      }
+    }
+  
+    addScore(amount) {
+      this.passingData.score += amount;
+      this.textScore.setText(`Score: ${this.passingData.score}`);
+    }
+  
+    setEnemyDirection(direction) {
+      this.lastEnemyMoveDir = this.enemyMoveDir;
+      this.enemyMoveDir = direction;
+    }
+  
+    updateEnemiesMovement() {
+      this.enemyMoveTimer = this.time.addEvent({
+        delay: 1024,
+        callback() {
+          if (this.enemyMoveDir === 'RIGHT') {
+            this.enemyRect.x += 6;
+  
+            if (this.enemyRect.x + this.enemyRect.width > this.game.config.width - 20) {
+              this.setEnemyDirection('DOWN');
+            }
+          } else if (this.enemyMoveDir === 'LEFT') {
+            this.enemyRect.x -= 6;
+  
+            if (this.enemyRect.x < 20) {
+              this.setEnemyDirection('DOWN');
+            }
+          } else if (this.enemyMoveDir === 'DOWN') {
+            this.enemyMoveTimer.delay -= 100;
+            this.moveEnemiesDown();
+          }
+  
+          for (let i = this.enemies.getChildren().length - 1; i >= 0; i -= 1) {
+            const enemy = this.enemies.getChildren()[i];
+  
+            if (this.enemyMoveDir === 'RIGHT') {
+              enemy.x += 6;
+            } else if (this.enemyMoveDir === 'LEFT') {
+              enemy.x -= 6;
+            }
+          }
+        },
+        callbackScope: this,
+        loop: true,
+      });
+    }
+  
+    updateEnemiesShooting() {
+      this.time.addEvent({
+        delay: 300,
+        callback() {
+          for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
+            const enemy = this.enemies.getChildren()[i];
+  
+            if (Phaser.Math.Between(0, 1000) > 995) {
+              const laser = new EnemyLaser(this, enemy.x, enemy.y);
+              this.enemyLasers.add(laser);
+  
+              this.sfx.laserEnemy.play();
+            }
+          }
+        },
+        callbackScope: this,
+        loop: true,
+      });
+    }
+  
+    moveEnemiesDown() {
+      for (let i = this.enemies.getChildren().length - 1; i >= 0; i -= 1) {
+        const enemy = this.enemies.getChildren()[i];
+  
+        enemy.y += 20;
+  
+        if (this.lastEnemyMoveDir === 'LEFT') {
+          this.setEnemyDirection('RIGHT');
+        } else if (this.lastEnemyMoveDir === 'RIGHT') {
+          this.setEnemyDirection('LEFT');
+        }
+      }
+    }
+
   }
