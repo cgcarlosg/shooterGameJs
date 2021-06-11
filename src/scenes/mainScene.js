@@ -282,4 +282,140 @@ export default class MainScene extends Phaser.Scene {
       }
     }
 
+    updatePlayerMovement() {
+      this.keys = this.input.keyboard.addKeys('LEFT,RIGHT,UP,DOWN,Z,X');
+      this.time.addEvent({
+        delay: 60,
+        callback() {
+          if (this.keys.RIGHT.isDown) {
+            this.player.x += 8;
+          }
+  
+          if (this.keys.LEFT.isDown) {
+            this.player.x -= 8;
+          }
+  
+          if (this.keys.UP.isDown) {
+            this.player.y -= 8;
+          }
+  
+          if (this.keys.DOWN.isDown) {
+            this.player.y += 8;
+          }
+        },
+        callbackScope: this,
+        loop: true,
+      });
+    }
+  
+    updatePlayerShooting() {
+      this.time.addEvent({
+        delay: 15,
+        callback() {
+          if (this.keySpace.isDown && this.player.active) {
+            if (this.playerShootTick < this.playerShootDelay) {
+              this.playerShootTick += 1;
+            } else {
+              const laser = new PlayerLaser(this, this.player.x, this.player.y);
+              this.playerLasers.add(laser);
+  
+              this.sfx.laserPlayer.play();
+  
+              this.playerShootTick = 0;
+            }
+          }
+        },
+        callbackScope: this,
+        loop: true,
+      });
+    }
+  
+    updateLasers() {
+      this.time.addEvent({
+        delay: 30,
+        callback() {
+          for (let i = 0; i < this.playerLasers.getChildren().length; i += 1) {
+            const laser = this.playerLasers.getChildren()[i];
+  
+            laser.y -= laser.displayHeight;
+  
+            if (laser.y < 16) {
+              this.createExplosion(laser.x, laser.y);
+  
+              if (laser) {
+                laser.destroy();
+              }
+            }
+          }
+        },
+        callbackScope: this,
+        loop: true,
+      });
+  
+      this.time.addEvent({
+        delay: 128,
+        callback() {
+          for (let i = 0; i < this.enemyLasers.getChildren().length; i += 1) {
+            const laser = this.enemyLasers.getChildren()[i];
+  
+            laser.y += laser.displayHeight;
+          }
+        },
+        callbackScope: this,
+        loop: true,
+      });
+    }
+  
+    addShield(posX, posY) {
+      for (let y = 0; y < this.shieldPattern.length; y += 1) {
+        for (let x = 0; x < this.shieldPattern[y].length; x += 1) {
+          if (this.shieldPattern[y][x] === 1) {
+            const tile = new ShieldTile(
+              this,
+              posX + (x * 8),
+              posY + (y * 8),
+            );
+            this.shieldTiles.add(tile);
+          }
+        }
+      }
+    }
+  
+    destroyShieldTile(tile) {
+      if (tile) {
+        this.createExplosion(tile.x, tile.y);
+  
+        for (let i = 0; i < Phaser.Math.Between(10, 20); i += 1) {
+          const shieldHole = this.add.graphics({
+            fillStyle: {
+              color: 0x000000,
+            },
+          });
+          shieldHole.setDepth(-1);
+  
+          const size = Phaser.Math.Between(2, 4);
+          const self = this;
+  
+          if (Phaser.Math.Between(0, 100) > 25) {
+            const rect = new Phaser.Geom.Rectangle(
+              tile.x + (Phaser.Math.Between(-2, tile.displayWidth + 2)),
+              tile.y + (Phaser.Math.Between(-2, tile.displayHeight + 2)),
+              size,
+              size,
+            );
+            shieldHole.fillRectShape(rect);
+            self.shieldHoles.add(shieldHole);
+          } else {
+            const rect = new Phaser.Geom.Rectangle(
+              tile.x + (Phaser.Math.Between(-4, tile.displayWidth + 4)),
+              tile.y + (Phaser.Math.Between(-4, tile.displayHeight + 4)),
+            );
+            shieldHole.fillRectShape(rect);
+            self.shieldHoles.add(shieldHole);
+          }
+        }
+        tile.destroy();
+      }
+    }
+
   }
