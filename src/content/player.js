@@ -3,14 +3,14 @@ import { Entity } from './entity';
 
 class Player extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, 'Player');
+    super(scene, x, y, 'sprPlayer');
     this.setScale(2);
   }
 }
 
 class PlayerLaser extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, 'LaserPlayer');
+    super(scene, x, y, 'sprLaserPlayer');
   }
 }
 

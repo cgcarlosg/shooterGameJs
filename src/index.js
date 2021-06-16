@@ -1,7 +1,7 @@
 import '../assets/styles/style.css';
 
 import Phaser from './phaser';
-import Start from './scenes/start';
+import Start from './scenes/startScreen';
 
 const config = {
   type: Phaser.WEBGL,
