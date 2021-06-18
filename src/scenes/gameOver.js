@@ -5,52 +5,52 @@ import Background from '../../assets/images/back.png';
 import buttonUp from '../../assets/images/buttonUp.png';
 
 export default class GameOver extends Phaser.Scene {
-    constructor() {
-      super('GameOver');
-    }
+  constructor() {
+    super('GameOver');
+  }
 
-    preload() {
-        this.load.image('GOendBG', Background);
-        this.load.image('btnUP', buttonUp);
-      }
+  preload() {
+    this.load.image('GOendBG', Background);
+    this.load.image('btnUP', buttonUp);
+  }
 
-      init(data) {
-        this.gameScore = data.gameScore;
-      }
+  init(data) {
+    this.gameScore = data.gameScore;
+  }
 
-      create() {
-        this.add.image(260, 400, 'GOendBG');
-    
-        this.addText(200, 'GAME OVER', 45);
-    
-        this.addText(100, 'Better luck next time', 45);
-    
-        this.addText(300, `Your score: ${this.gameScore}`, 25);
-    
-        ScoreLogic.createNameInput();
-    
-        this.btnSubmit = this.add.sprite(
-          this.game.config.width * 0.5,
-          370,
-          'btnUP',
-        );
+  create() {
+    this.add.image(260, 400, 'GOendBG');
 
-        Helper.addButtonFunctionality(this, this.btnSubmit, () => ScoreLogic.handleScore(this, this.gameScore));
-        Helper.addButtonText(this, 370, 'Submit score');
-      }
+    this.addText(250, 'GAME OVER', 45);
 
-      addText(y, text, size) {
-        this.add.text(
-          this.game.config.width * 0.5,
-          y,
-          text,
-          {
-            fontFamily: 'monospace',
-            fontSize: size,
-            fontStyle: 'bold',
-            color: '#ffffff',
-            align: 'center',
-          },
-        ).setOrigin(0.5);
-      }
-    }
+    this.addText(250, 'BETTER LUCK', 45);
+
+    this.addText(250, `Your score: ${this.gameScore}`, 25);
+
+    ScoreLogic.createNameInput();
+
+    this.btnSubmit = this.add.sprite(
+      this.game.config.width * 0.4,
+      320,
+      'btnUP',
+    );
+    // eslint-disable-next-line max-len
+    Helper.addButtonFunctionality(this, this.btnSubmit, () => ScoreLogic.handleScore(this, this.gameScore));
+    Helper.addButtonText(this, 370, 'Submit score');
+  }
+
+  addText(y, text, size) {
+    this.add.text(
+      this.game.config.width * 0.5,
+      y,
+      text,
+      {
+        fontFamily: 'arial',
+        fontSize: size,
+        fontStyle: 'bold',
+        color: '#ffffff',
+        align: 'center',
+      },
+    ).setOrigin(0.5);
+  }
+}

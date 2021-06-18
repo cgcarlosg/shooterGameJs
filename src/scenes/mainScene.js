@@ -52,9 +52,8 @@ export default class MainScene extends Phaser.Scene {
         score: 0,
       };
     }
-    this.add.image(400, 300, 'bgStart');
+    this.add.image(300, 300, 'bgStart');
 
-    // Resize the image
 
     this.sfx = {
       explode: this.sound.add('sndExplode'),
@@ -65,18 +64,19 @@ export default class MainScene extends Phaser.Scene {
     this.anims.create({
       key: 'sprExplosion',
       frames: this.anims.generateFrameNumbers('sprExplosion'),
-      frameRate: 18,
+      frameRate: 12,
       repeat: 0,
     });
 
     this.textScore = this.add.text(
-      12,
-      10,
+      250,
+      50,
       `Score: ${this.passingData.score}`,
       {
-        fontFamily: 'monospace',
-        fontSize: 16,
-        align: 'left',
+        fontFamily: 'arial',
+        fontSize: 34,
+        align: 'right',
+        color: 'black'
       },
     );
 
@@ -84,20 +84,20 @@ export default class MainScene extends Phaser.Scene {
 
       this,
       this.game.config.width * 0.5,
-      this.game.config.height - 54,
-      this.scale = 0.5,
+      this.game.config.height - 40,
+      this.scale = 1,
     );
     this.player.body.collideWorldBounds = true;
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-    this.playerShootDelay = 22;
+    this.playerShootDelay = 10;
     this.playerShootTick = 0;
 
     this.shieldPattern = [
-      [0, 0, 0, 1, 1, 0, 0, 0],
-      [0, 0, 1, 1, 1, 1, 0, 0],
-      [0, 1, 1, 1, 1, 1, 1, 0],
+      [1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1],
 
     ];
 
@@ -121,7 +121,7 @@ export default class MainScene extends Phaser.Scene {
       for (let y = 0; y < Math.round((this.game.config.height / 20) * 0.25); y += 1) {
         const enemy = new Enemy(this, x * 24, 128 + (y * 20), 'sprEnemy0');
         enemy.play('sprEnemy0');
-        enemy.setScale(2);
+        enemy.setScale(2.5);
         this.enemies.add(enemy);
       }
     }
@@ -216,7 +216,7 @@ export default class MainScene extends Phaser.Scene {
 
   updateEnemiesMovement() {
     this.enemyMoveTimer = this.time.addEvent({
-      delay: 1024,
+      delay: 700,
       callback() {
         if (this.enemyMoveDir === 'RIGHT') {
           this.enemyRect.x += 6;
@@ -274,7 +274,7 @@ export default class MainScene extends Phaser.Scene {
     for (let i = this.enemies.getChildren().length - 1; i >= 0; i -= 1) {
       const enemy = this.enemies.getChildren()[i];
 
-      enemy.y += 20;
+      enemy.y += 40;
 
       if (this.lastEnemyMoveDir === 'LEFT') {
         this.setEnemyDirection('RIGHT');
@@ -390,7 +390,7 @@ export default class MainScene extends Phaser.Scene {
       for (let i = 0; i < Phaser.Math.Between(10, 20); i += 1) {
         const shieldHole = this.add.graphics({
           fillStyle: {
-            color: 0x000000,
+            color: 'white',
           },
         });
         shieldHole.setDepth(-1);
@@ -450,7 +450,7 @@ export default class MainScene extends Phaser.Scene {
     }
 
     this.time.addEvent({
-      delay: 3000,
+      delay: 1000,
       callback() {
         if (this.passingData.lives > 0) {
           this.passingData.lives -= 1;

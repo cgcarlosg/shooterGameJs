@@ -25,20 +25,21 @@ export default class StartScreen extends Phaser.Scene {
     this.add.image(400, 300, 'bgStart');
 
     this.textTitle = this.add.text(
-      this.game.config.width * 0.5,
-      64,
-      'Galaxy War',
+      this.game.config.width * 0.5, 50,
+      'SPACE INVADERS',
       {
-        fontFamily: 'monospace',
-        fontSize: 32,
-        align: 'center',
+        fontFamily: 'ARIAL',
+        fontSize: 34,
+        align: 'LEFT',
+        color: 'black'
+       
       },
     );
     this.textTitle.setOrigin(0.5);
 
     this.btnPlay = this.add.sprite(
-      this.game.config.width * 0.2,
-      this.game.config.height * 0.3,
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.2,
       'sprBtnPlay',
     );
     this.btnPlay.setInteractive();
@@ -53,8 +54,8 @@ export default class StartScreen extends Phaser.Scene {
     }, this);
 
     this.leaderBoard = this.add.sprite(
-      this.game.config.width * 0.7,
-      this.game.config.height * 0.6,
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
       'ldBtn',
     );
     this.leaderBoard.setInteractive();
@@ -69,15 +70,15 @@ export default class StartScreen extends Phaser.Scene {
     }, this);
 
     const style = {
-      fontFamily: 'san-serif',
-      fontSize: 16,
-      color: '#aaf',
+      fontFamily: 'ARIAL',
+      fontSize: 20,
+      color: 'black',
       align: 'center',
     };
-    const instruction1 = 'Use Arrow keys to move around.';
-    const instruction2 = 'Use Space Bar to shoot.';
+    const instruction1 = 'ARROW KEYS MOVE AROUND.';
+    const instruction2 = 'SPACE BAR SHOOT.';
     const xPos = this.game.config.width * 0.5;
-    const yPos = this.game.config.height - 40;
+    const yPos = this.game.config.height - 400;
     this.instructions1 = this.add.text(xPos, yPos, instruction1, style);
     this.instructions1.setOrigin(0.5);
     this.instructions2 = this.add.text(xPos, yPos + 20, instruction2, style);
