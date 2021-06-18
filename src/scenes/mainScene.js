@@ -54,7 +54,6 @@ export default class MainScene extends Phaser.Scene {
     }
     this.add.image(300, 300, 'bgStart');
 
-
     this.sfx = {
       explode: this.sound.add('sndExplode'),
       laserPlayer: this.sound.add('sndLaserPlayer'),
@@ -77,7 +76,7 @@ export default class MainScene extends Phaser.Scene {
         fontSize: 34,
         align: 'right',
         color: 'black'
-      },
+      }
     );
 
     this.player = new Player(
