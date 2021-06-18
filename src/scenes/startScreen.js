@@ -32,7 +32,7 @@ export default class StartScreen extends Phaser.Scene {
         fontSize: 34,
         align: 'LEFT',
         color: 'black',
-      }
+      },
     );
     this.textTitle.setOrigin(0.5);
 

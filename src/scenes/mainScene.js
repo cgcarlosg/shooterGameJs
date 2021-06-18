@@ -75,8 +75,8 @@ export default class MainScene extends Phaser.Scene {
         fontFamily: 'arial',
         fontSize: 34,
         align: 'right',
-        color: 'black'
-      }
+        color: 'black',
+      },
     );
 
     this.player = new Player(
