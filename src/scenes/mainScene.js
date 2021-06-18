@@ -47,8 +47,8 @@ export default class MainScene extends Phaser.Scene {
     if (Object.getOwnPropertyNames(this.passingData).length === 0
       && this.passingData.constructor === Object) {
       this.passingData = {
-        maxLives: 2,
-        lives: 2,
+        maxLives: 1,
+        lives: 0,
         score: 0,
       };
     }
@@ -63,7 +63,7 @@ export default class MainScene extends Phaser.Scene {
     this.anims.create({
       key: 'sprExplosion',
       frames: this.anims.generateFrameNumbers('sprExplosion'),
-      frameRate: 12,
+      frameRate: 20,
       repeat: 0,
     });
 
@@ -82,7 +82,7 @@ export default class MainScene extends Phaser.Scene {
     this.player = new Player(
 
       this,
-      this.game.config.width * 0.5,
+      this.game.config.width,
       this.game.config.height - 40,
       this.scale = 1,
     );
@@ -90,14 +90,14 @@ export default class MainScene extends Phaser.Scene {
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-    this.playerShootDelay = 10;
-    this.playerShootTick = 0;
+    this.playerShootDelay = 15;
+    this.playerShootTick = 1;
 
     this.shieldPattern = [
-      [1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1],
-
+      [0, 0, 1, 0, 0],
+      [0, 1, 1, 1, 0],
+      [1, 1, 1, 1, 1]
+     
     ];
 
     this.enemies = this.add.group();
@@ -112,15 +112,15 @@ export default class MainScene extends Phaser.Scene {
     this.enemyRect = new Phaser.Geom.Rectangle(
       0,
       0,
-      Math.round((this.game.config.width / 24) * 0.75) * 24,
-      Math.round((this.game.config.height / 20) * 0.25) * 20,
+      Math.round((this.game.config.width / 24) * 0.7) * 24,
+      Math.round((this.game.config.height / 20) * 0.3) * 20,
     );
 
-    for (let x = 0; x < Math.round((this.game.config.width / 25) * 0.75); x += 1) {
-      for (let y = 0; y < Math.round((this.game.config.height / 20) * 0.25); y += 1) {
-        const enemy = new Enemy(this, x * 24, 128 + (y * 20), 'sprEnemy0');
+    for (let x = 0; x < Math.round((this.game.config.width / 40) * 1.2); x += 1) {
+      for (let y = 0; y < Math.round((this.game.config.height / 32) * 0.5); y += 1) {
+        const enemy = new Enemy(this, x * 24, 100 + (y * 20), 'sprEnemy0');
         enemy.play('sprEnemy0');
-        enemy.setScale(2.5);
+        enemy.setScale(4);
         this.enemies.add(enemy);
       }
     }
@@ -273,7 +273,7 @@ export default class MainScene extends Phaser.Scene {
     for (let i = this.enemies.getChildren().length - 1; i >= 0; i -= 1) {
       const enemy = this.enemies.getChildren()[i];
 
-      enemy.y += 40;
+      enemy.y += 20;
 
       if (this.lastEnemyMoveDir === 'LEFT') {
         this.setEnemyDirection('RIGHT');
@@ -311,7 +311,7 @@ export default class MainScene extends Phaser.Scene {
 
   updatePlayerShooting() {
     this.time.addEvent({
-      delay: 15,
+      delay: 1,
       callback() {
         if (this.keySpace.isDown && this.player.active) {
           if (this.playerShootTick < this.playerShootDelay) {
@@ -333,7 +333,7 @@ export default class MainScene extends Phaser.Scene {
 
   updateLasers() {
     this.time.addEvent({
-      delay: 30,
+      delay: 10,
       callback() {
         for (let i = 0; i < this.playerLasers.getChildren().length; i += 1) {
           const laser = this.playerLasers.getChildren()[i];
