@@ -16,11 +16,11 @@ export default class Score extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(260, 440, 'endBG');
+    this.add.image(300, 400, 'endBG');
 
     this.add.text(
       this.game.config.width * 0.5,
-      70,
+      40,
       'Leaders Board', {
         fontSize: 28,
         fontFamily: 'monospace',
@@ -29,7 +29,7 @@ export default class Score extends Phaser.Scene {
 
     this.returnButton = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.9,
+      this.game.config.height * 0.5,
       'returnBtn',
     );
 

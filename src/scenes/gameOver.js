@@ -21,17 +21,13 @@ export default class GameOver extends Phaser.Scene {
   create() {
     this.add.image(260, 400, 'GOendBG');
 
-    this.addText(250, 'GAME OVER', 45);
-
-    this.addText(250, 'BETTER LUCK', 45);
-
-    this.addText(250, `Your score: ${this.gameScore}`, 25);
+    this.addText(300, `Your score: ${this.gameScore}`, 25);
 
     ScoreLogic.createNameInput();
 
     this.btnSubmit = this.add.sprite(
-      this.game.config.width * 0.4,
-      320,
+      this.game.config.width * 0.5,
+      370,
       'btnUP',
     );
     // eslint-disable-next-line max-len
