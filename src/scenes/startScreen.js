@@ -10,7 +10,7 @@ export default class StartScreen extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('sprBtnPlay', playBtn);
+    this.load.image('BtnPlay', playBtn);
     this.load.image('bgStart', Background);
     this.load.image('ldBtn', leadBtn);
 
@@ -39,7 +39,7 @@ export default class StartScreen extends Phaser.Scene {
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.2,
-      'sprBtnPlay',
+      'BtnPlay',
     );
     this.btnPlay.setInteractive();
 

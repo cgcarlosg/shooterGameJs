@@ -11,17 +11,17 @@ class Entity extends Phaser.GameObjects.Sprite {
 
 class ShieldTile extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, 'sprShieldTile');
+    super(scene, x, y);
     this.setOrigin(0);
     this.setScale(2);
-    this.setDepth(-2);
+
   }
 }
 
 class Explosion extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, 'sprExplosion');
-    this.play('sprExplosion');
+    super(scene, x, y, 'Explosion');
+    this.play('Explosion');
     this.setOrigin(0);
     this.setScale(2);
     this.on('animationcomplete', () => {

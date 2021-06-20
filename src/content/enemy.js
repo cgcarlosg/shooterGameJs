@@ -3,7 +3,7 @@ import { Entity } from './entity';
 
 class EnemyLaser extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, 'sprLaserEnemy');
+    super(scene, x, y, 'LaserEnemy');
   }
 }
 
