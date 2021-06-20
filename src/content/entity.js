@@ -14,7 +14,6 @@ class ShieldTile extends Entity {
     super(scene, x, y);
     this.setOrigin(0);
     this.setScale(2);
-
   }
 }
 

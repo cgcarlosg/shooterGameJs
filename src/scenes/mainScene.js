@@ -89,7 +89,6 @@ export default class MainScene extends Phaser.Scene {
     this.playerShootDelay = 15;
     this.playerShootTick = 1;
 
-
     this.enemies = this.add.group();
     this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
@@ -98,8 +97,7 @@ export default class MainScene extends Phaser.Scene {
     this.enemyMoveDir = 'LEFT';
     this.enemyRect = new Phaser.Geom.Rectangle(0, 0,
       Math.round((this.game.config.width / 24) * 0.7) * 24,
-      Math.round((this.game.config.height / 20) * 0.3) * 20,
-    );
+      Math.round((this.game.config.height / 20) * 0.3) * 20);
 
     for (let x = 0; x < Math.round((this.game.config.width / 40) * 1.2); x += 1) {
       for (let y = 0; y < Math.round((this.game.config.height / 32) * 0.5); y += 1) {
@@ -341,7 +339,6 @@ export default class MainScene extends Phaser.Scene {
       icon.setDepth(5);
     }
   }
-
 
   onLifeDown() {
     if (this.passingData.lives === 0) {
