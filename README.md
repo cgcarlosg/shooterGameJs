@@ -73,40 +73,35 @@ git clone https://github.com/cgcarlosg/shooterGameJs
 
 
 ### Tests
-- Run `npm run test` to see all available tests associated with this project.
+- Run `npm run test` to see all tests.
 
-<!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/arikarim/Shooter-game/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/cgcarlosg/shooterGameJs/issues) for proposed features.
 
-
-
-<!-- CONTRIBUTING -->
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your Feature Branch (`git checkout -b feature/feature`)
+3. Commit your Changes (`git commit -m 'Add some stuff'`)
+4. Push to the Branch (`git push`)
 5. Open a Pull Request from your branch
 
 
-<!-- CONTACT -->
 ## Contact
 
-👤 **Ari Karim**
+👤 **Carlos Gutierrez**
 
-- Github: [Arikarim](https://github.com/arikarim)
-- Linkedin: [Arikarim](https://www.linkedin.com/in/ari-karim/)
+- GitHub:  [@cgcarlosg](https://github.com/cgcarlosg)
+- Twitter: [@cgcarlosg1](https://twitter.com/cgcarlosg1)
+- LinkedIn: [@carlosalbeniogutierrez](www.linkedin.com/in/carlosalbeniogutierrez)
 
 
-<!-- ACKNOWLEDGEMENTS -->
 ## Show your support
 
 Give a ⭐️ if you like this project!
 
 ## Acknowledgements
-- Special thanks to [Microverse](https://www.microverse.org/) for this opportunity to learn something new on the fly and apply it in a project.
+- Phaser3. A great tool to enjoy programming
