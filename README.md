@@ -5,7 +5,7 @@ Shooter game built with Phaser and javascript, a player fights with a lot of ene
 
 GitHub [Live Demo Link](https://rawcdn.githack.com/cgcarlosg/shooterGameJs/91f27023ff9642fd933842e50f3a1dd0d4ffc247/dist/index.html)
 
-Heroku [Live Demo Link]()
+Heroku [Live Demo Link](https://spaceshootercapstonejavascript.herokuapp.com/)
 
 ## Screenshots of the app.
 
