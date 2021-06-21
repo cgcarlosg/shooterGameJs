@@ -8,7 +8,7 @@ const apiInfo = {
   gameID: 'Vl4d7IVkemORRVg2fUda',
 };
 
-function ero() {
+function subscribe() {
   // eslint-disable-next-line no-alert
   const alertt = document.createElement('p');
   alertt.textContent = 'Please insert your name';
@@ -21,7 +21,7 @@ const getPlayerName = () => {
   if (playerName) {
     return playerName;
   }
-  ero();
+  subscribe();
   setTimeout(() => {
     const er = document.querySelector('.inputt');
     er.remove();
@@ -78,6 +78,6 @@ export const getGameScores = async () => {
     const scoreBoard = await rawResult.json();
     return scoreBoard;
   } catch (error) {
-    return 'Sorry, something went wrong.';
+    return 'Something went wrong.';
   }
 };
