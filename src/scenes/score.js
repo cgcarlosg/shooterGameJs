@@ -21,7 +21,7 @@ export default class Score extends Phaser.Scene {
     this.add.text(
       this.game.config.width * 0.5,
       40,
-      'Leaders Board', {
+      'Winners Board', {
         fontSize: 28,
         fontFamily: 'monospace',
       },

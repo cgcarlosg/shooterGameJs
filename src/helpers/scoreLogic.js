@@ -11,7 +11,7 @@ const apiInfo = {
 function subscribe() {
   // eslint-disable-next-line no-alert
   const alertt = document.createElement('p');
-  alertt.textContent = 'Please insert your name';
+  alertt.textContent = 'Insert your name';
   alertt.classList.add('inputt');
   document.querySelector('#game').appendChild(alertt);
 }

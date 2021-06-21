@@ -37,15 +37,11 @@ Follow these instructions:
 
 <hr>
 
-## Game Design
+## Video Presentation
 
-<img src="./assets/images/player.png" alt="Logo" width="30" height="30"> <br>
-This is the main ship.
-<br>
-<br>
 
-<img src="./assets/images/enemybig.png" alt="Logo" width="30" height="30"> <br>
-These are the enemy ships
+Video [Loom video](https://www.loom.com/share/a1c1477a5db940e3b6bc4d97f3ad3f5b)
+
 
 <br>
 <br>
