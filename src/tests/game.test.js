@@ -1,9 +1,6 @@
 import '@babel/polyfill';
 import * as ScoreLogic from '../helpers/scoreLogic';
 
-import Phaser from '../phaser';
-import MainScene from '../scenes/mainScene';
-
 global.fetch = require('jest-fetch-mock');
 
 describe('Posting Score to Api ', () => {
@@ -74,9 +71,4 @@ describe('Getting Scores from API', () => {
     const scoreBoard = await ScoreLogic.getGameScores('Carlos', 1200);
     expect(scoreBoard[0].score).not.toBeGreaterThan(1200);
   });
-});
-
-test('1. Test game scene inheritance from phaser ', () => {
-  const testScene = new MainScene();
-  expect(testScene instanceof Phaser.Scene).toBeTruthy();
 });
