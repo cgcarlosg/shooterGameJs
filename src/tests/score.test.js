@@ -63,7 +63,7 @@ describe('Getting Scores from API', () => {
   test('Returns error message if API call fails', async () => {
     fetch.mockRejectOnce(new Error('fake error message'));
     const scoreBoard = await ScoreLogic.getGameScores('Carlos', 1200);
-    expect(scoreBoard).toBe('Sorry, something went wrong.');
+    expect(scoreBoard).toBe('Something went wrong.');
   });
 
   test('Score should not be greater than give score', async () => {
