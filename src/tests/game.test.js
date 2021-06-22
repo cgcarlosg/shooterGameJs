@@ -73,3 +73,10 @@ describe('Getting Scores from API', () => {
   });
 });
 
+import Phaser from '../phaser';
+import MainScene from '../scenes/mainScene';
+
+test('1. Test game scene inheritance from phaser ', () => {
+  const testScene = new MainScene();
+  expect(testScene instanceof Phaser.Scene).toBeTruthy();
+});
