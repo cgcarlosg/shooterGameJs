@@ -72,3 +72,4 @@ describe('Getting Scores from API', () => {
     expect(scoreBoard[0].score).not.toBeGreaterThan(1200);
   });
 });
+

@@ -1,7 +1,7 @@
 import Phaser from '../phaser';
 import * as Helper from '../helpers/buttonHelpers';
 import * as ScoreLogic from '../helpers/scoreLogic';
-import Background from '../../assets/images/back.png';
+import background from '../../assets/images/back.png';
 import buttonUp from '../../assets/images/buttonUp.png';
 
 export default class GameOver extends Phaser.Scene {
@@ -10,7 +10,7 @@ export default class GameOver extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('GOendBG', Background);
+    this.load.image('GOendBG', background);
     this.load.image('btnUP', buttonUp);
   }
 
