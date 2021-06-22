@@ -47,7 +47,7 @@ Video [Loom video](https://www.loom.com/share/a1c1477a5db940e3b6bc4d97f3ad3f5b)
 <br>
 
 
-<!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
@@ -67,7 +67,15 @@ git clone https://github.com/cgcarlosg/shooterGameJs
 - with live server extension installed, open the `index.html` file in the `dist` folder with the live server, if not 
 - Enjoy the game!
 
+### Game Design
 
+-TARGET PLATFORM:  Browser game
+
+-UI / PLAYER CONTROLS: left and right arrow keys to moves in that direction and the spacebar to shoot.
+
+- GAME MECHANICS: Enemies moving left to right and down. If the player is hit by a laser the game restart. The player wins if he kills all the enemies. The player moves only from left to right.
+
+- ASSETS: Sprites for background, player and enemies.
 ### Tests
 - Run `npm run test` to see all tests.
 
