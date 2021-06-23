@@ -7,9 +7,12 @@ import explosion from '../../assets/images/Explosion.png';
 import exploSound from '../../assets/audio/sndExplode.wav';
 import laserSnd1 from '../../assets/audio/sndLaserPlayer.wav';
 import laserSnd2 from '../../assets/audio/sndLaserEnemy.wav';
-import { Player, PlayerLaser } from '../content/player';
-import { Enemy, EnemyLaser } from '../content/enemy';
-import { Explosion } from '../content/entity';
+import Player from '../content/player';
+import PlayerLaser from '../content/playerlaser';
+import Enemy from '../content/enemy';
+import EnemyLaser from '../content/enemylaser';
+
+import Explosion from '../content/explosion';
 import Background from '../../assets/images/backk.jpg';
 
 export default class MainScene extends Phaser.Scene {

@@ -9,11 +9,10 @@ const apiInfo = {
 };
 
 function subscribe() {
-  // eslint-disable-next-line no-alert
-  const alertt = document.createElement('p');
-  alertt.textContent = 'Insert your name';
-  alertt.classList.add('inputt');
-  document.querySelector('#game').appendChild(alertt);
+  const nameInp = document.createElement('p');
+  nameInp.textContent = 'Insert your name';
+  nameInp.classList.add('inputt');
+  document.querySelector('#game').appendChild(nameInp);
 }
 
 const getPlayerName = () => {
