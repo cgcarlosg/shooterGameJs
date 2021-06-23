@@ -1,19 +1,9 @@
 import Phaser from '../phaser';
-import player from '../../assets/images/player.png';
-import enemies from '../../assets/images/enemy.png';
-import enemyLaser from '../../assets/images/LaserEnemy.png';
-import playerLaser from '../../assets/images/LaserPlayer.png';
-import explosion from '../../assets/images/Explosion.png';
-import exploSound from '../../assets/audio/sndExplode.wav';
-import laserSnd1 from '../../assets/audio/sndLaserPlayer.wav';
-import laserSnd2 from '../../assets/audio/sndLaserEnemy.wav';
 import Player from '../content/player';
 import PlayerLaser from '../content/playerlaser';
 import Enemy from '../content/enemy';
 import EnemyLaser from '../content/enemylaser';
-
 import Explosion from '../content/explosion';
-import Background from '../../assets/images/backk.jpg';
 
 export default class MainScene extends Phaser.Scene {
   constructor() {
@@ -25,23 +15,23 @@ export default class MainScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('bgStart', Background);
-    this.load.image('Player', player);
+    this.load.image('bgStart', '../assets/images/backk.jpg');
+    this.load.image('Player', '../assets/images/player.png');
 
-    this.load.spritesheet('enemy', enemies, {
+    this.load.spritesheet('enemy', '../assets/images/enemy.png', {
       frameWidth: 7,
       frameHeight: 7,
     });
-    this.load.image('LaserEnemy', enemyLaser);
-    this.load.image('LaserPlayer', playerLaser);
-    this.load.spritesheet('Explosion', explosion, {
+    this.load.image('LaserEnemy', '../assets/images/LaserEnemy.png');
+    this.load.image('LaserPlayer', '../assets/images/LaserPlayer.png');
+    this.load.spritesheet('Explosion', '../assets/images/Explosion.png', {
       frameWidth: 7,
       frameHeight: 7,
     });
 
-    this.load.audio('sndExplode', exploSound);
-    this.load.audio('sndLaserPlayer', laserSnd1);
-    this.load.audio('sndLaserEnemy', laserSnd2);
+    this.load.audio('sndExplode', '../assets/audio/sndExplode.wav');
+    this.load.audio('sndLaserPlayer', '../assets/audio/sndLaserPlayer.wav');
+    this.load.audio('sndLaserEnemy', '../assets/audio/sndLaserEnemy.wav');
   }
 
   create() {
