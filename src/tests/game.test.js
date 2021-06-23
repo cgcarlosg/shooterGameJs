@@ -1,8 +1,7 @@
 import '@babel/polyfill';
 import * as ScoreLogic from '../helpers/scoreLogic';
 import Phaser from '../phaser';
-import Player from '../scenes/mainScene';
-import GameOver from '../scenes/GameOver';
+import GameOver from '../scenes/gameOver';
 import MainScene from '../scenes/mainScene';
 
 global.fetch = require('jest-fetch-mock');
@@ -77,20 +76,10 @@ describe('Getting Scores from API', () => {
   });
 });
 
-
-
-test('1. Test player scene inheritance from phaser ', () => {
-  const testScene = new Player();
-  expect(testScene instanceof Phaser.Scene).toBeTruthy();
-});
-
-
-
 test('1. Test game scene inheritance from phaser ', () => {
   const testScene = new GameOver();
   expect(testScene instanceof Phaser.Scene).toBeTruthy();
 });
-
 
 test('1. Test game scene inheritance from phaser ', () => {
   const testScene = new MainScene();
