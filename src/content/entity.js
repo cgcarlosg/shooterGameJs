@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 import Phaser from '../phaser';
 
 class Entity extends Phaser.GameObjects.Sprite {
@@ -9,26 +8,4 @@ class Entity extends Phaser.GameObjects.Sprite {
   }
 }
 
-class ShieldTile extends Entity {
-  constructor(scene, x, y) {
-    super(scene, x, y);
-    this.setOrigin(0);
-    this.setScale(2);
-  }
-}
-
-class Explosion extends Entity {
-  constructor(scene, x, y) {
-    super(scene, x, y, 'Explosion');
-    this.play('Explosion');
-    this.setOrigin(0);
-    this.setScale(2);
-    this.on('animationcomplete', () => {
-      if (this) {
-        this.destroy();
-      }
-    });
-  }
-}
-
-export { Entity, ShieldTile, Explosion };
+export default Entity;

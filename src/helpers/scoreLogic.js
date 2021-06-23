@@ -8,12 +8,11 @@ const apiInfo = {
   gameID: 'Vl4d7IVkemORRVg2fUda',
 };
 
-function ero() {
-  // eslint-disable-next-line no-alert
-  const alertt = document.createElement('p');
-  alertt.textContent = 'Please insert your name';
-  alertt.classList.add('inputt');
-  document.querySelector('#game').appendChild(alertt);
+function subscribe() {
+  const nameInp = document.createElement('p');
+  nameInp.textContent = 'Insert your name';
+  nameInp.classList.add('inputt');
+  document.querySelector('#game').appendChild(nameInp);
 }
 
 const getPlayerName = () => {
@@ -21,7 +20,7 @@ const getPlayerName = () => {
   if (playerName) {
     return playerName;
   }
-  ero();
+  subscribe();
   setTimeout(() => {
     const er = document.querySelector('.inputt');
     er.remove();
@@ -78,6 +77,6 @@ export const getGameScores = async () => {
     const scoreBoard = await rawResult.json();
     return scoreBoard;
   } catch (error) {
-    return 'Sorry, something went wrong.';
+    return 'Something went wrong.';
   }
 };
